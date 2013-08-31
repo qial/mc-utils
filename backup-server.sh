@@ -12,8 +12,10 @@ fi
 
 screen -S mc-$1 -p 0 -X eval 'stuff "say Backing up world...\012"'
 screen -S mc-$1 -p 0 -X eval 'stuff "save-all\012"'
+sleep 1s
 screen -S mc-$1 -p 0 -X eval 'stuff "save-off\012"'
-rdiff-backup /home/mc/minecraft/$1 /home/mc/Dropbox/minecraft/rdiff/$1
+rdiff-backup /home/mc/minecraft/servers/$1 /home/mc/Dropbox/minecraft/rdiff/$1
 screen -S mc-$1 -p 0 -X eval 'stuff "save-on\012"'
+sleep 1s
 screen -S mc-$1 -p 0 -X eval 'stuff "say Backup complete!\012"'
 
